@@ -73,6 +73,11 @@ y editamos
 vim default.conf
 ```
 ![Archivo default](/default.png)
+Reiniciar nginx 
+```bash
+nginx -s reloadf
+```
+
 
 Resultado:
 
