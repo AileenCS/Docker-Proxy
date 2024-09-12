@@ -72,9 +72,9 @@ y editamos
 ```bash
 vim default.conf
 ```
-![Archivo default](images/images.png)
+![Archivo default](/default.png)
 
 Resultado:
-![Archivo default](images/images.png)
+![Archivo default](/resultado.png)
 
 
