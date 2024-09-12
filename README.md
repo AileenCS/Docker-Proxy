@@ -81,7 +81,7 @@ vim default.conf
 ![Archivo default](/default.png)
 Reiniciar nginx 
 ```bash
-nginx -s reloadf
+nginx -s reload
 ```
 Regesanos a ejecutar a nuestro archivo
 ```bash
