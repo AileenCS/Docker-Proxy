@@ -88,7 +88,7 @@ Regesanos a ejecutar a nuestro archivo
 flask --app hello run
 ```
 Resultado:
-
+Acceda http://localhost/pagina
 ![Archivo default](/resultado.png)
 
 
