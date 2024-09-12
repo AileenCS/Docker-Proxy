@@ -63,12 +63,18 @@ Creamos el archivo de flask en nuestro usuario siguiendo los pasos de la pagina
 https://flask.palletsprojects.com/en/3.0.x/
 ```
 
-Una ves estando  activado el . .venv/bin/activate
+Una ves estando  activado el  entorno virtual
+```bash
+. .venv/bin/activate
+```
 creamos nuestro archivo  vim hello.py
 editando esta parte a  " @app.route("/pagina")" para evitar que nginx se confunda.
 
-Ingresamos en la carpeta /etc/nginx/conf.d
-y editamos
+Ingresamos en la carpeta  
+```bash
+cd /etc/nginx/conf.d 
+```
+y editamos para redirigir las solicitudes a la aplicación Flask. 
 ```bash
 vim default.conf
 ```
@@ -77,8 +83,10 @@ Reiniciar nginx
 ```bash
 nginx -s reloadf
 ```
-
-
+Regesanos a ejecutar a nuestro archivo
+```bash
+flask --app hello run
+```
 Resultado:
 
 ![Archivo default](/resultado.png)
