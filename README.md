@@ -90,6 +90,6 @@ flask --app hello run
 Resultado:
 Acceda http://localhost/pagina
 
-![Archivo default](/resultado.png)
+![Archivo default](/resultadoo.png)
 
 
