@@ -75,6 +75,7 @@ vim default.conf
 ![Archivo default](/default.png)
 
 Resultado:
+
 ![Archivo default](/resultado.png)
 
 
