@@ -7,7 +7,7 @@ Este repositorio describe los pasos necesarios para configurar un contenedor Doc
 - Conexión a internet para descargar las imágenes necesarias.
 
 
-##Descarga de imagenes en docker
+## Descarga de imagenes en docker
 ```bash
 docker pull nginx
 
