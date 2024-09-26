@@ -28,7 +28,7 @@ docker ps
      ```bash
      docker ps -a
      ``
-4.   Abrimos una terminal dentro del contenedor para que puedas escribir comandos directamente dentro de él.
+4.   Abrimos una terminal dentro del contenedor para que puedas escribir comandos directamente dentro de él(indicar el ID del contenedor o bien, el nombre que le asignamos)
  ```bash
 docker exec -it 53900ea88a8f bash
 ```
@@ -36,6 +36,19 @@ docker exec -it 53900ea88a8f bash
     ```bash
     adduser aileen
     ```
+    al dar enter nos pedira poner una contraseña
+  ```bash   New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for user
+Enter the new value, or press ENTER for the default
+        Full Name []: user
+        Room Number []: 1234
+        Work Phone []: 1234
+        Home Phone []: 1234
+        Other []: 1234
+Is the information correct? [Y/n] y
+```
 Actualizamos 
 con
 ```bash
@@ -45,22 +58,37 @@ y hacemos el  que nos pide
 ```bash
 apt list --upgradable
 ```
-
+En el root:
 Instalamos python 
 ```bash
- apt install -y python3.11 
+ apt install -y python3.11
  ```
+En el root:
+Instalamos el .venv de pyton
+
+```bash
+Apt Install -y python3.11-venv. 
+ ```
+En el mismo root
+
 Instalemos un editor ya sea nano o vim
 ```bash
 apt install -y vim
 ```
+en el root:
 Instalemos flask
 ```bash
 pip install Flask
 ```
-Creamos el archivo de flask en nuestro usuario siguiendo los pasos de la pagina 
+Ingresamos a nuestro usuario 
 ```bash
-https://flask.palletsprojects.com/en/3.0.x/
+su aileen 
+```
+Creamos el archivo de flask en nuestro usuario siguiendo los pasos de la pagina https://flask.palletsprojects.com/en/3.0.x/installation/
+```bash
+ mkdir myproject
+$ cd myproject
+$ python3 -m venv .venv
 ```
 
 Una ves estando  activado el  entorno virtual
@@ -68,18 +96,32 @@ Una ves estando  activado el  entorno virtual
 . .venv/bin/activate
 ```
 creamos nuestro archivo  vim hello.py
+```bash
+ vim hello.py
+```
 editando esta parte a  " @app.route("/pagina")" para evitar que nginx se confunda.
+guardamos con el comando :wq
 
-Ingresamos en la carpeta  
+Ingresamos en la carpeta 
 ```bash
 cd /etc/nginx/conf.d 
 ```
-y editamos para redirigir las solicitudes a la aplicación Flask. 
+Si listamos los archivos (ls) aparece un archivo de nombre default.conf.
+y este lo editamos  para redirigir las solicitudes a la aplicación Flask  
 ```bash
 vim default.conf
 ```
 ![Archivo default](/default.png)
-Reiniciar nginx 
+
+No borramos nada solo le agregamos
+```bash
+location /pagina{ proxy_pass http://127.0.0.1:5000; }
+```
+location /pagina: Esto le dice a Nginx que cualquier persona que visite http://tu_dominio.com/pagina debe ser manejada de una manera especial.
+proxy_pass http://127.0.0.1:5000;: Aquí le estás diciendo a Nginx que, cuando alguien entre a http://tu_dominio.com/pagina, redirija esa solicitud a un servidor que está corriendo en tu computadora (localhost), en el puerto 5000. Este servidor podría ser tu aplicación Flask, por ejemplo.
+
+
+Reiniciar nginx por completo
 ```bash
 nginx -s reload
 ```
