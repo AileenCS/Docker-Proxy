@@ -88,19 +88,31 @@ Creamos el archivo de flask en nuestro usuario siguiendo los pasos de la pagina 
 ```bash
  mkdir myproject
 $ cd myproject
-$ python3 -m venv .venv
 ```
-
-Una ves estando  activado el  entorno virtual
+crear el entorno virtual con 
+python3 -m venv .venv
+verificar  que se activo correctamente el entorno:
 ```bash
 . .venv/bin/activate
 ```
+
 creamos nuestro archivo  vim hello.py
 ```bash
  vim hello.py
 ```
+```bash
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
+```
 editando esta parte a  " @app.route("/pagina")" para evitar que nginx se confunda.
 guardamos con el comando :wq
+exit para salir de donde estamos pero ingresamos a nuestro usuario 
+su aileen 
 
 Ingresamos en la carpeta 
 ```bash
@@ -125,8 +137,17 @@ Reiniciar nginx por completo
 ```bash
 nginx -s reload
 ```
+
+
 Regesanos a ejecutar a nuestro archivo
 ```bash
+su aileen
+pwd
+cd
+cd myproject
+python3 -m venv .venv
+. .venv/bin/activate
+
 flask --app hello run
 ```
 Resultado:
